@@ -28,6 +28,9 @@ class Main extends PluginBase implements Listener
 	{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new unBanTask($this), 20);
+		((!file_exists($this->getDataFolder()) . "config.yml") ? $this->saveResource("config.yml", false) : '');
+		$config = new Config($this->getDataFolder() . "config.yml");
+		$this->banTime = ((is_numeric($time = $config->get("time"))) ? $time : 60);
 	}
 
 	public function onDisable()
