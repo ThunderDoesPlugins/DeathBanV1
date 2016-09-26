@@ -40,7 +40,7 @@ class Main extends PluginBase implements Listener
 	public function onJoin(player\PlayerJoinEvent $ev)
 	{
 		if ($this->isBanned($ev->getPlayer())) {
-			$this->getServer()->getScheduler()->scheduleDelayedTask(new callBackKick($this, $ev->getPlayer()), 5);
+			$this->getServer()->getScheduler()->scheduleDelayedTask(new callBackKick($this, $ev->getPlayer()), 10);
 		}
 	}
 
